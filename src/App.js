@@ -1,26 +1,21 @@
 import './App.css';
-import Info  from "./info.js";
+import SearchBar from './searchbar';
+import {useState} from "react"
 
 function App() {
+  const [data,setData] = useState({});
+
+  const updateData = (searchParams) =>{
+    setData(searchParams);
+  };
+
   return (
     <div className='App'>
-      <Info />
-      <Additem />
+      <SearchBar callback={updateData}/>
+      <p>{["data"] in data ? data["data"]: "No Data to display"}</p>
     </div>
   );
 }
 
-
-
-
-function Additem() {
-  const value = "Tim is great."
-  return(
-    <form>
-      <label for = "text-form">Type something</label>
-      <input type = "text" value = {value} id = "text-form" />
-    </form>
-  );  
-}
 
 export default App;
